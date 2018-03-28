@@ -28,8 +28,7 @@ class Player {
     }
 
     // Update player position
-    // Parameter: dt, a time delta between ticks
-    update(dt) {
+    update() {
 
     }
 
@@ -51,7 +50,7 @@ class Player {
 const allEnemies = [];
 
 // Place the player object in a variable called player
-const player = {};
+const player = new Player();
 
 
 
