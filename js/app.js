@@ -36,7 +36,7 @@ class Player {
     // Draw player on screen
     // Parameter: dt, a time delta between ticks
     render() {
-
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
     // Handle player input
