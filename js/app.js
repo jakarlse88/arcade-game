@@ -37,16 +37,16 @@ class Player {
     update() {
         if (this.keypress === 'left' && this.x >= 101) {
             this.x -= 101;
-            this.collision = false;
+            this.validMove = true;
         } else if (this.keypress === 'right' && this.x <= 303) {
             this.x += 101;
-            this.collision = false;
+            this.validMove = true;
         } else if (this.keypress === 'up' && this.y >= -24.89) {
             this.y -= 83;
-            this.collision = false;
+            this.validMove = true;
         } else if (this.keypress === 'down' && this.y < 390) {
             this.y += 83;
-            this.collision = false;
+            this.validMove = true;
         }
 
         this.keypress = null;
@@ -60,8 +60,9 @@ class Player {
             }
         }
 
-        if (!this.collison) {
-            document.querySelector('#playerScore').textContent= ++this.score;
+        if (this.validMove && !this.collision) {
+            document.querySelector('#playerScore').textContent = ++this.score;
+            this.validMove = false;
         }
 
         // Check for win condition
