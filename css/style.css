@@ -1,3 +1,5 @@
+/* Body styles */
+
 body {
     text-align: center;
     background-image: url("../images/background/gaming-pattern.png"); /* Pattern from www.toptal.com/designers/subtlepatterns/*/ 
@@ -24,4 +26,31 @@ footer {
     font-size: .4em;
     font-family: Arial, sans-serif;
     color: grey;
+}
+
+/* Win modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    margin: auto;
+    right: 0;
+    bottom: 0;
+    width: 500px;
+    height: 250px;
+    overflow: auto;
+    background-color: grey;
+    background-image: url("../images/background/gaming-pattern.png"); /* Pattern from www.toptal.com/designers/subtlepatterns/*/ 
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, .6);
+    box-shadow: 0 0 15px 15px rgba(0, 0, 0, .5);
+}
+
+.modal-content {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 250px;
 }

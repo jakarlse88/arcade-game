@@ -31,6 +31,7 @@ class Player {
         this.y = 390;
         this.score = 0;
         this.sprite = 'images/char-boy.png';
+        this.winner = false;
     }
 
     // Update player position
@@ -65,9 +66,10 @@ class Player {
             this.validMove = false;
         }
 
-        // Check for win condition
+        // Game win logic
         if (this.y <= 50) {
-            console.log('win');
+            document.querySelector('#winModal').style.display = 'block';
+            this.winner = true;
         }
     }
     
@@ -78,7 +80,11 @@ class Player {
 
     // Handle player input 
     handleInput(e) {
-        this.keypress = e;
+        if (!this.winner) {
+            this.keypress = e;
+        } else {
+            this.keypress = null;
+        }   
     }
 }
 
