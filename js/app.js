@@ -16,7 +16,6 @@ class Enemy {
         if (this.x >= 505) {
             this.x = -100;
         }
-        console.log(this.speed);
         this.x += this.speed * dt;
     }
 
@@ -48,11 +47,17 @@ class Player {
 
         this.keypress = null;
 
+        // Check for enemy collision
         for (let enemy of allEnemies) {
             if (enemy.x >= (this.x - 25) && enemy.x <= (this.x + 25) &&
                 enemy.y >= (this.y - 25) && enemy.y <= (this.y + 25)) {
                     console.log('collision');
             }
+        }
+
+        // Check for win condition
+        if (this.y <= 50) {
+            console.log('win');
         }
     }
     
