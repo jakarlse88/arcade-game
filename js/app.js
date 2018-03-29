@@ -37,12 +37,16 @@ class Player {
     update() {
         if (this.keypress === 'left' && this.x >= 101) {
             this.x -= 101;
+            this.collision = false;
         } else if (this.keypress === 'right' && this.x <= 303) {
             this.x += 101;
+            this.collision = false;
         } else if (this.keypress === 'up' && this.y >= -24.89) {
             this.y -= 83;
-        } else if (this.keypress === 'down' && this.y <= 390) {
+            this.collision = false;
+        } else if (this.keypress === 'down' && this.y < 390) {
             this.y += 83;
+            this.collision = false;
         }
 
         this.keypress = null;
@@ -52,7 +56,12 @@ class Player {
             if (enemy.x >= (this.x - 25) && enemy.x <= (this.x + 25) &&
                 enemy.y >= (this.y - 25) && enemy.y <= (this.y + 25)) {
                     console.log('collision');
+                    this.collision = true;
             }
+        }
+
+        if (!this.collison) {
+            document.querySelector('#playerScore').textContent= ++this.score;
         }
 
         // Check for win condition
