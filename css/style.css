@@ -1,3 +1,18 @@
 body {
     text-align: center;
+    background-image: url("../images/background/gaming-pattern.png"); /* Pattern from www.toptal.com/designers/subtlepatterns/*/ 
+    background-color: grey;
+    font-family: 'Indie Flower', cursive; /* Font from https://fonts.google.com/specimen/Indie+Flower */
+}
+
+h1 {
+    margin: .2em auto 0;
+    padding: 0;
+    font-size: 4em;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
 }

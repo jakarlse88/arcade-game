@@ -23,15 +23,29 @@ class Enemy {
 // Vertical movement: .7
 // Horisontal movement: 
 class Player {
-    constructor(x = (101 * 2), y = (83 * 4.7)) {
-        this.x = x;
-        this.y = y;
+    constructor() {
+        this.x = 202;
+        this.y = 390;
+        this.score = 0;
         this.sprite = 'images/char-boy.png';
     }
 
     // Update player position
     update() {
 
+        
+        if (this.keypress === 'left' && this.x >= 101) {
+            this.x -= 101;
+        } else if (this.keypress === 'right' && this.x <= 303) {
+            this.x += 101;
+        } else if (this.keypress === 'up' && this.y >= -24.89) {
+            this.y -= 83;
+        } else if (this.keypress === 'down' && this.y <= 390) {
+            this.y += 83;
+        }
+
+        this.keypress = null;
+    
     }
 
     // Draw player on screen
@@ -40,17 +54,8 @@ class Player {
     }
 
     // Handle player input 
-    handleInput(input) {
-        console.log(`x: ${this.x} y: ${this.y}`);
-        if (input === 'left' && this.x >= 101) {
-            this.x -= 101;
-        } else if (input === 'right' && this.x <= 303) {
-            this.x += 101;
-        } else if (input === 'up' && this.y >= -24.89) {
-            this.y -= 83;
-        } else if (input === 'down' && this.y <= 390) {
-            this.y += 83;
-        }
+    handleInput(e) {
+        this.keypress = e;
     }
 
     checkCollisions() {
