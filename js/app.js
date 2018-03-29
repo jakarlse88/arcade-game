@@ -20,8 +20,10 @@ class Enemy {
     }
 }
 
+// Vertical movement: .7
+// Horisontal movement: 
 class Player {
-    constructor(x = 200, y = 400) {
+    constructor(x = (101 * 2), y = (83 * 4.7)) {
         this.x = x;
         this.y = y;
         this.sprite = 'images/char-boy.png';
@@ -37,9 +39,18 @@ class Player {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
-    // Handle player input
-    handleInput() {
-
+    // Handle player input 
+    handleInput(input) {
+        console.log(`x: ${this.x} y: ${this.y}`);
+        if (input === 'left' && this.x >= 101) {
+            this.x -= 101;
+        } else if (input === 'right' && this.x <= 303) {
+            this.x += 101;
+        } else if (input === 'up' && this.y >= -24.89) {
+            this.y -= 83;
+        } else if (input === 'down' && this.y <= 390) {
+            this.y += 83;
+        }
     }
 
     checkCollisions() {
@@ -51,9 +62,9 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [
-    new Enemy(0, 60),
-    new Enemy(0, 142),
-    new Enemy(0, 225)
+    new Enemy(0, (83 * 0.7)),
+    new Enemy(0, (83 * 1.7)),
+    new Enemy(0, (83 * 2.7))
 ];
 
 // Place the player object in a variable called player
