@@ -10,9 +10,8 @@ class Enemy {
     // Update enemy position
     // Parameter: dt, a time delta between ticks
     update(dt) {
-        // You should multiply any movement by the dt parameter
-        // which will ensure the game runs at the same speed for
-        // all computers.
+        // Multiply any movement by the dt parameter to 
+        // ensure the game runs at the same speed for all computers.
         if (this.x >= 505) {
             this.x = -100;
         }
@@ -27,14 +26,15 @@ class Enemy {
 
 class Player {
     constructor() {
-        this.x = 202;
-        this.y = 390;
-        this.score = 0;
+        this.x = 202; // Starting position
+        this.y = 390; // Starting position
+        this.score = 0; 
         this.sprite = 'images/char-boy.png';
-        this.winner = false;
+        this.winner = false; 
     }
 
-    // Update player position
+    // Update player position,
+    // as long as it won't move off-board
     update() {
         if (this.keypress === 'left' && this.x >= 101) {
             this.x -= 101;
@@ -56,11 +56,14 @@ class Player {
         for (let enemy of allEnemies) {
             if (enemy.x >= (this.x - 25) && enemy.x <= (this.x + 25) &&
                 enemy.y >= (this.y - 25) && enemy.y <= (this.y + 25)) {
-                    console.log('collision');
-                    this.collision = true;
+                    this.x = 202;
+                    this.y = 390;
+                    this.score = 0;
+                    document.querySelector('#playerScore').textContent = 0;
             }
         }
 
+        // Track score
         if (this.validMove && !this.collision) {
             document.querySelector('#playerScore').textContent = ++this.score;
             this.validMove = false;
@@ -88,7 +91,6 @@ class Player {
     }
 }
 
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [
@@ -99,8 +101,6 @@ const allEnemies = [
 
 // Place the player object in a variable called player
 const player = new Player();
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
