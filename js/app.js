@@ -21,7 +21,7 @@ class Enemy {
 }
 
 class Player {
-    constructor(x, y) {
+    constructor(x = 200, y = 400) {
         this.x = x;
         this.y = y;
         this.sprite = 'images/char-boy.png';
@@ -33,7 +33,6 @@ class Player {
     }
 
     // Draw player on screen
-    // Parameter: dt, a time delta between ticks
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
@@ -42,12 +41,20 @@ class Player {
     handleInput() {
 
     }
+
+    checkCollisions() {
+        
+    }
 }
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const allEnemies = [];
+const allEnemies = [
+    new Enemy(0, 60),
+    new Enemy(0, 142),
+    new Enemy(0, 225)
+];
 
 // Place the player object in a variable called player
 const player = new Player();
