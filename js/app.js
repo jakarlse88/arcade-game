@@ -20,8 +20,6 @@ class Enemy {
     }
 }
 
-// Vertical movement: .7
-// Horisontal movement: 
 class Player {
     constructor() {
         this.x = 202;
@@ -32,8 +30,6 @@ class Player {
 
     // Update player position
     update() {
-
-        
         if (this.keypress === 'left' && this.x >= 101) {
             this.x -= 101;
         } else if (this.keypress === 'right' && this.x <= 303) {
@@ -45,9 +41,15 @@ class Player {
         }
 
         this.keypress = null;
-    
-    }
 
+        for (let enemy of allEnemies) {
+            if (enemy.x >= (this.x - 25) && enemy.x <= (this.x + 25) &&
+                enemy.y >= (this.y - 25) && enemy.y <= (this.y + 25)) {
+                    console.log('collision');
+            }
+        }
+    }
+    
     // Draw player on screen
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -56,10 +58,6 @@ class Player {
     // Handle player input 
     handleInput(e) {
         this.keypress = e;
-    }
-
-    checkCollisions() {
-        
     }
 }
 
