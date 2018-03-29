@@ -4,6 +4,7 @@ class Enemy {
         this.x = x;
         this.y = y;
         this.sprite = 'images/enemy-bug.png';
+        this.speed = (Math.random() * (450 - 100) + 100);
     }
 
     // Update enemy position
@@ -15,7 +16,8 @@ class Enemy {
         if (this.x >= 505) {
             this.x = -100;
         }
-        this.x += 100 * dt;
+        console.log(this.speed);
+        this.x += this.speed * dt;
     }
 
     // Draw enemy on screen
